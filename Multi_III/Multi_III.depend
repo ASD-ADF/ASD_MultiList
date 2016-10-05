@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1475657003 source:c:\users\dee\documents\cpp\multi_iii\list_child.cpp
+	"list_child.h"
+
+1475656674 c:\users\dee\documents\cpp\multi_iii\list_child.h
+	<iostream>
+
+1475658844 source:c:\users\dee\documents\cpp\multi_iii\list_parent.cpp
+	"list_parent.h"
+
+1475658805 c:\users\dee\documents\cpp\multi_iii\list_parent.h
+	<iostream>
+	"list_relasi.h"
+
+1475658572 source:c:\users\dee\documents\cpp\multi_iii\main.cpp
+	<iostream>
+	"list_child.h"
+	"list_parent.h"
+
+1475658770 source:c:\users\dee\documents\cpp\multi_iii\list_relasi.cpp
+	"list_relasi.h"
+
+1475658888 c:\users\dee\documents\cpp\multi_iii\list_relasi.h
+	"list_relasi.h"
+	"list_child.h"
+	<iostream>
+
