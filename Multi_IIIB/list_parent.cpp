@@ -16,6 +16,7 @@ address_parent alokasi(infotype_parent x) {
     P = new elmlist_parent;
     info(P) = x;
     next(P) = NULL;
+    createList(child(P));
     return P;
 }
 
@@ -49,6 +50,7 @@ void printInfo(List_parent L) {
     if(first(L)!=NULL) {
         do {
             cout<<info(P)<<endl;
+            printInfo(child(P));
             P = next(P);
         } while((P)!=first(L));
     }

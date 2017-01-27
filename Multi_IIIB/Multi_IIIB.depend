@@ -31,23 +31,18 @@
 1485554288 c:\users\andityaarifianto\documents\github\asd_multilist\multi_iii\list_child.h
 	<iostream>
 
-1485556765 source:c:\users\andityaarifianto\documents\github\asd_multilist\multi_iii\list_parent.cpp
+1485554288 source:c:\users\andityaarifianto\documents\github\asd_multilist\multi_iii\list_parent.cpp
 	"list_parent.h"
 
-1485556421 c:\users\andityaarifianto\documents\github\asd_multilist\multi_iii\list_parent.h
+1485554288 c:\users\andityaarifianto\documents\github\asd_multilist\multi_iii\list_parent.h
 	<iostream>
-
-1485554288 source:c:\users\andityaarifianto\documents\github\asd_multilist\multi_iii\main.cpp
-	<iostream>
-	"list_child.h"
-	"list_parent.h"
-
-1485556627 source:c:\users\andityaarifianto\documents\github\asd_multilist\multi_iii\list_relasi.cpp
 	"list_relasi.h"
 
-1485556501 c:\users\andityaarifianto\documents\github\asd_multilist\multi_iii\list_relasi.h
+1485554288 c:\users\andityaarifianto\documents\github\asd_multilist\multi_iii\list_relasi.h
 	"list_relasi.h"
 	"list_child.h"
-	"list_parent.h"
 	<iostream>
+
+1485554288 source:c:\users\andityaarifianto\documents\github\asd_multilist\multi_iii\list_relasi.cpp
+	"list_relasi.h"
 

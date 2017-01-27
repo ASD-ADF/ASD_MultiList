@@ -3,22 +3,19 @@
 
 #include "list_relasi.h"
 #include "list_child.h"
-#include "list_parent.h"
 
 #include <iostream>
 using namespace std;
 
 #define next(P) P->next
 #define first(L) L.first
-#define child(P) P->child
-#define parent(P) P->parent
+#define info(P) P->info
 
 typedef struct elmlist_relasi *address_relasi;
 
 struct elmlist_relasi{
     address_relasi next;
-    address_child child;
-    address_parent parent;
+    address_child info;
 };
 
 struct List_relasi{
@@ -36,9 +33,9 @@ void deleteAfter(address_relasi Prec, address_relasi &P);
 
 
 /** PERLU MODIFIKASI */
-address_relasi alokasi( address_parent P, address_child C);
+address_relasi alokasi( address_child C);
 void dealokasi(address_relasi &P);
-address_relasi findElm(List_relasi L, address_parent P, address_child C);
+address_relasi findElm(List_relasi L, address_child C);
 void printInfo(List_relasi L);
 
 

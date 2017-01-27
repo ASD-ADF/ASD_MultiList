@@ -20,6 +20,7 @@ Sebagai dasar dari representasi database, linked list juga dapat merepresentasik
 Seluruh contoh hanya diberikan InsertFirst dengan Parent adalah single-circular infotype integer dan Child adalah double infotype string<br>
 
 ### Bentuk I (relasi 1-N)
+![01] (/asset/01.PNG)
 multi-linked list bentuk I digunakan untuk merepresentasikan dan menjamin hubungan 1-n <br>
 contoh relasi : Mahasiswa (child) - Kelas (parent)<br>
 bentuk relasi : pointer parent di element child<br>
@@ -33,6 +34,7 @@ con :<br>
 
 
 ### Bentuk II (relasi 1-N dan M-N)
+![02] (/asset/02.PNG)
 multi-linked list bentuk II digunakan untuk merepresentasikan hubungan 1-n dan juga m-n namun tidak menjamin kedua hubungan<br>
 contoh relasi : Pegawai (parent) - Daftar Anak (child)<br>
 bentuk relasi : list child di elemen parent<br>
@@ -46,9 +48,22 @@ con : <br>
 
 
 ### Bentuk III (relasi M-N)
+![03] (/asset/03.PNG)
 multi-linked list bentuk III digunakan untuk merepresentasikan dan menjamin hubungan m-n<br>
 contoh relasi : Dosen (parent) - Mahasiswa (child)  --> bisa dibalik<br>
-bentuk relasi : list relasi<br>
+bentuk relasi : terdapat list ketiga sebagai list relasi<br>
+pro : <br>
+* menjamin hubungan m-n
+
+con : <br>
+* perlu list tambahan (list relasi)
+
+### Bentuk III-B (relasi M-N)
+![03B] (/asset/03B.PNG)
+multi-linked list bentuk III digunakan untuk merepresentasikan dan menjamin hubungan m-n<br>
+Perbedaan bentuk multi-linked list bentuk IIIB dengan sebelumnya adalah bahwa list relasi merupakan child list dari elemen parent<br>
+contoh relasi : Dosen (parent) - Mahasiswa (child)  --> bisa dibalik<br>
+bentuk relasi : terdapat list ketiga sebagai list relasi yang berada di dalam List parent<br>
 pro : <br>
 * menjamin hubungan m-n
 

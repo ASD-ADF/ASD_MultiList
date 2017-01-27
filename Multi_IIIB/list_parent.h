@@ -4,15 +4,19 @@
 #include <iostream>
 using namespace std;
 
+#include "list_relasi.h"
+
 #define first(L) L.first
 #define next(P) P->next
 #define info(P) P->info
+#define child(P) P->child
 
 typedef int infotype_parent;
 typedef struct elmlist_parent *address_parent;
 
 struct elmlist_parent {
     infotype_parent info;
+    List_relasi child;
     address_parent next;
 };
 

@@ -3,22 +3,19 @@
 using namespace std;
 #include "list_child.h"
 #include "list_parent.h"
-#include "list_relasi.h"
 
 int main()
 {
-    cout << "Bentuk III - Contoh Relasi M-N" << endl;
+    cout << "Bentuk IIIB - Contoh Relasi M-N" << endl;
 
     List_parent LP;
     List_child LC;
-    List_relasi LR;
     address_child C;
     address_parent P;
     address_relasi R;
 
     createList(LP);
     createList(LC);
-    createList(LR);
 
     /** insert parent */
     P = alokasi(3);
@@ -49,23 +46,22 @@ int main()
     /** RELASIKAN PARENT DENGAN CHILD **/
     P = findElm(LP, 4);
     C = findElm(LC, "E");
-    R = alokasi(P,C);
-    insertFirst(LR,R );
-
+    R = alokasi(C);
+    insertFirst(child(P),R );
     C = findElm(LC, "D");
-    R = alokasi(P, C);
-    insertFirst(LR,R );
+    R = alokasi(C);
+    insertFirst(child(P),R );
 
 
     P = findElm(LP, 2);
     C = findElm(LC, "E");
-    R = alokasi(P, C);
-    insertFirst(LR, R );
+    R = alokasi(C);
+    insertFirst(child(P),R );
 
     P = findElm(LP, 3);
     C = findElm(LC, "A");
-    R = alokasi(P, C);
-    insertFirst(LR,R );
+    R = alokasi(C);
+    insertFirst(child(P),R );
 
     cout<<endl<<"Setelah Direlasikan"<<endl;
     cout<<"list parent"<<endl;
@@ -74,11 +70,8 @@ int main()
     cout<<endl<<"list child"<<endl;
     printInfo(LC);
 
-    cout<<endl<<"list relasi"<<endl;
-    printInfo(LR);
 
-
-    /** KELEBIHAN DARI BENTUK III: jika salah satu child diedit **/
+    /** KELEBIHAN DARI BENTUK IIIB: jika salah satu child diedit **/
     C = findElm(LC, "E");
     info(C) = "X";
 
@@ -88,9 +81,6 @@ int main()
 
     cout<<endl<<"list child"<<endl;
     printInfo(LC);
-
-    cout<<endl<<"list relasi"<<endl;
-    printInfo(LR);
 
     return 0;
 }
