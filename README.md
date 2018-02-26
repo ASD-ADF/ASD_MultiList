@@ -20,7 +20,7 @@ Sebagai dasar dari representasi database, linked list juga dapat merepresentasik
 Seluruh contoh hanya diberikan InsertFirst dengan Parent adalah single-circular infotype integer dan Child adalah double infotype string<br>
 
 ### Bentuk I (relasi 1-N)
-![01] (https://raw.githubusercontent.com/ASD-ADF/ASD_MultiList/master/asset/01.png)
+![01](https://user-images.githubusercontent.com/13241336/36650938-af7d7db4-1ad8-11e8-8a4d-43d83672f50f.png)<br>
 multi-linked list bentuk I digunakan untuk merepresentasikan dan menjamin hubungan 1-n <br>
 contoh relasi : Mahasiswa (child) - Kelas (parent)<br>
 bentuk relasi : pointer parent di element child<br>
@@ -34,7 +34,7 @@ con :<br>
 
 
 ### Bentuk II (relasi 1-N dan M-N)
-![02] (https://raw.githubusercontent.com/ASD-ADF/ASD_MultiList/master/asset/02.png)
+![02](https://user-images.githubusercontent.com/13241336/36650940-b11585f4-1ad8-11e8-9d76-7453248717b0.png)<br>
 multi-linked list bentuk II digunakan untuk merepresentasikan hubungan 1-n dan juga m-n namun tidak menjamin kedua hubungan<br>
 contoh relasi : Pegawai (parent) - Daftar Anak (child)<br>
 bentuk relasi : list child di elemen parent<br>
@@ -48,7 +48,7 @@ con : <br>
 
 
 ### Bentuk III (relasi M-N)
-![03] (https://raw.githubusercontent.com/ASD-ADF/ASD_MultiList/master/asset/03.png)
+![03](https://user-images.githubusercontent.com/13241336/36650941-b240fd3c-1ad8-11e8-98ac-3b67ff175467.png)<br>
 multi-linked list bentuk III digunakan untuk merepresentasikan dan menjamin hubungan m-n<br>
 contoh relasi : Dosen (parent) - Mahasiswa (child)  --> bisa dibalik<br>
 bentuk relasi : terdapat list ketiga sebagai list relasi<br>
@@ -59,7 +59,7 @@ con : <br>
 * perlu list tambahan (list relasi)
 
 ### Bentuk III-B (relasi M-N)
-![03B] (https://raw.githubusercontent.com/ASD-ADF/ASD_MultiList/master/asset/03B.png)
+![03b](https://user-images.githubusercontent.com/13241336/36650943-b360956a-1ad8-11e8-93ae-8ad52dce284b.png)<br>
 multi-linked list bentuk III digunakan untuk merepresentasikan dan menjamin hubungan m-n<br>
 Perbedaan bentuk multi-linked list bentuk IIIB dengan sebelumnya adalah bahwa list relasi merupakan child list dari elemen parent<br>
 contoh relasi : Dosen (parent) - Mahasiswa (child)  --> bisa dibalik<br>
