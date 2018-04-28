@@ -1,86 +1,135 @@
 #include <iostream>
+#include<conio.h>
+#include<stdio.h>
+#include<iostream>
+#include<windows.h>
 
 using namespace std;
+
 #include "list_child.h"
 #include "list_parent.h"
+#include "operation.h"
 
-int main()
-{
-    cout << "Bentuk IIIB - Contoh Relasi M-N" << endl;
-
-    List_parent LP;
+int main(){
     List_child LC;
-    address_child C;
-    address_parent P;
-    address_relasi R;
+    List_parent LP;
+    int i;
 
-    createList(LP);
-    createList(LC);
+    createList_P(LP);
+    createList_C(LC);
 
-    /** insert parent */
-    P = alokasi(3);
-    insertFirst(LP, P);
-    P = alokasi(7);
-    insertFirst(LP, P);
-    P = alokasi(2);
-    insertFirst(LP, P);
-    P = alokasi(4);
-    insertFirst(LP, P);
+    cout<<"       Final Task ASD 2018        \n";
+    cout<<" Muhamad Fajar Rivaldy (1301164476) \n";
+    cout<<" Muhamad Rizky Anugrah Sakti (1301164489) \n";
 
-    cout<<"list parent"<<endl;
-    printInfo(LP);
+    menu:
+    cout<<"             MENU                   \n";
+    cout<<"=================================== \n";
+    cout<<"         1. add new Artist   \n";
+    cout<<"         2. add new Song     \n";
+    cout<<"         3. add Song to Artist \n";
+    cout<<"         4. delete Song from Artis \n";
+    cout<<"         5. delete Artis  \n";
+    cout<<"         5. show all Artist \n";
+    cout<<"         6. show all Song    \n";
+    cout<<"         7. show all Artist and Song  \n";
+    cout<<"         8. Check connection  \n ";
+    cout<<"         9. Disconnect connection  \n ";
+    cout<<"        10. Play Artis \n";
+    cout<<"        11. show child of parent \n";
+    cout<<"        12. Play Music  \n";
+    cout<<"------------------------------------ \n";
+    getch();
+    cout<<"     INPUT : ";cin>>i;
+        switch(i){
+            case 1:{
+                system("cls");
+                insertParent(LP);
+                getch();
+                system("cls");
+                goto menu;
+            }
+            case 2:{
+                system("cls");
+                insertChild(LC);
+                getch();
+                system("cls");
+                goto menu;
+            }
+            case 3:{
+                system("cls");
+                connectList(LP,LC);
+                getch();
+                system("cls");
+                goto menu;
+            }
+            case 4:{
+                system("cls");
+                deleteChild(LP,LC);
+                getch();
+                system("cls");
+                goto menu;
+            }
+            case 5:{
+                system("cls");
+                DisplayParent(LP);
+                getch();
+                system("cls");
+                goto menu;
+            }
+            case 6:{
+                system("cls");
+                displayChild(LC);
+                getch();
+                system("cls");
+                goto menu;
+            }
+            case 7:{
+                system("cls");
+                printALL(LP);
+                getch();
+                system("cls");
+                goto menu;
+            }
+            case 8:{
+                system("cls");
+                checkConnection(LP,LC);
+                getch();
+                system("cls");
+                goto menu;
+            }
+            case 9:{
+                system("cls");
+                disconnect(LP,LC);
+                getch();
+                system("cls");
+                goto menu;
+            }
+            case 10:{
+                system("cls");
+                PlayArtist(LP);
+                getch();
+                system("cls");
+                goto menu;
+            }
+            case 11:{
+                system("cls");
+                printChildOfParent(LP);
+                getch();
+                system("cls");
+                goto menu;
+            }
+            case 12:{
+                system("cls");
+                MusicById(LC);
+                getch();
+                system("cls");
+                goto menu;
+            }
+            default :{
+                system("cls");
+                goto menu;
+            }
+        }
 
-    /** insert child */
-    C = alokasi("A");
-    insertFirst(LC, C);
-    C = alokasi("D");
-    insertFirst(LC, C);
-    C = alokasi("E");
-    insertFirst(LC, C);
-    C = alokasi("O");
-    insertFirst(LC, C);
-
-    cout<<"list child"<<endl;
-    printInfo(LC);
-
-    /** RELASIKAN PARENT DENGAN CHILD **/
-    P = findElm(LP, 4);
-    C = findElm(LC, "E");
-    R = alokasi(C);
-    insertFirst(child(P),R );
-    C = findElm(LC, "D");
-    R = alokasi(C);
-    insertFirst(child(P),R );
-
-
-    P = findElm(LP, 2);
-    C = findElm(LC, "E");
-    R = alokasi(C);
-    insertFirst(child(P),R );
-
-    P = findElm(LP, 3);
-    C = findElm(LC, "A");
-    R = alokasi(C);
-    insertFirst(child(P),R );
-
-    cout<<endl<<"Setelah Direlasikan"<<endl;
-    cout<<"list parent"<<endl;
-    printInfo(LP);
-
-    cout<<endl<<"list child"<<endl;
-    printInfo(LC);
-
-
-    /** KELEBIHAN DARI BENTUK IIIB: jika salah satu child diedit **/
-    C = findElm(LC, "E");
-    info(C) = "X";
-
-    cout<<endl<<"Setelah Child Diedit"<<endl;
-    cout<<"list parent"<<endl;
-    printInfo(LP);
-
-    cout<<endl<<"list child"<<endl;
-    printInfo(LC);
-
-    return 0;
 }

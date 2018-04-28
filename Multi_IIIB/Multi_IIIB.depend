@@ -46,3 +46,48 @@
 1485554288 source:c:\users\andityaarifianto\documents\github\asd_multilist\multi_iii\list_relasi.cpp
 	"list_relasi.h"
 
+1524910999 source:c:\users\aldi\desktop\prog\std\multi_iiib\list_child.cpp
+	"list_child.h"
+	"list_relasi.h"
+
+1524758566 c:\users\aldi\desktop\prog\std\multi_iiib\list_child.h
+	<iostream>
+
+1524919065 source:c:\users\aldi\desktop\prog\std\multi_iiib\list_parent.cpp
+	"list_parent.h"
+
+1524643156 c:\users\aldi\desktop\prog\std\multi_iiib\list_parent.h
+	<iostream>
+	"list_relasi.h"
+
+1524881689 c:\users\aldi\desktop\prog\std\multi_iiib\list_relasi.h
+	"list_relasi.h"
+	"list_child.h"
+	<iostream>
+
+1524915346 source:c:\users\aldi\desktop\prog\std\multi_iiib\list_relasi.cpp
+	"list_relasi.h"
+
+1524922218 source:c:\users\aldi\desktop\prog\std\multi_iiib\main.cpp
+	<iostream>
+	<conio.h>
+	<stdio.h>
+	<iostream>
+	<windows.h>
+	"list_child.h"
+	"list_parent.h"
+	"operation.h"
+
+1524921707 source:c:\users\aldi\desktop\prog\std\multi_iiib\operation.cpp
+	"operation.h"
+
+1524921658 c:\users\aldi\desktop\prog\std\multi_iiib\operation.h
+	"list_child.h"
+	"list_parent.h"
+	"list_relasi.h"
+	<conio.h>
+	<stdio.h>
+	<iostream>
+	<windows.h>
+	<ctime>
+
