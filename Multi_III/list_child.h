@@ -1,8 +1,10 @@
 #ifndef LIST_CHILD_H_INCLUDED
 #define LIST_CHILD_H_INCLUDED
 
-
-#include <iostream>
+#include<conio.h>
+#include<stdio.h>
+#include<iostream>
+#include<windows.h>
 using namespace std;
 
 #define next(P) P->next
@@ -11,7 +13,12 @@ using namespace std;
 #define last(L) L.last
 #define info(P) P->info
 
-typedef string infotype_child;
+struct memb{
+    int id;
+    string name;
+};
+
+typedef memb infotype_child;
 typedef struct elmlist_child *address_child;
 
 struct elmlist_child{

@@ -51,3 +51,39 @@
 	"list_parent.h"
 	<iostream>
 
+1524922551 source:c:\users\c3x\documents\github\asd_multilist\multi_iii\list_child.cpp
+	"list_child.h"
+
+1524919451 c:\users\c3x\documents\github\asd_multilist\multi_iii\list_child.h
+	<conio.h>
+	<stdio.h>
+	<iostream>
+	<windows.h>
+
+1524919962 source:c:\users\c3x\documents\github\asd_multilist\multi_iii\list_parent.cpp
+	"list_parent.h"
+
+1524912378 c:\users\c3x\documents\github\asd_multilist\multi_iii\list_parent.h
+	<conio.h>
+	<stdio.h>
+	<iostream>
+	<windows.h>
+
+1524925417 source:c:\users\c3x\documents\github\asd_multilist\multi_iii\list_relasi.cpp
+	"list_relasi.h"
+
+1524924073 c:\users\c3x\documents\github\asd_multilist\multi_iii\list_relasi.h
+	"list_relasi.h"
+	"list_child.h"
+	"list_parent.h"
+	<conio.h>
+	<stdio.h>
+	<iostream>
+	<windows.h>
+
+1524925417 source:c:\users\c3x\documents\github\asd_multilist\multi_iii\main.cpp
+	<iostream>
+	"list_child.h"
+	"list_parent.h"
+	"list_relasi.h"
+

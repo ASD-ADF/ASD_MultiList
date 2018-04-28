@@ -7,90 +7,139 @@ using namespace std;
 
 int main()
 {
-    cout << "Bentuk III - Contoh Relasi M-N" << endl;
-
-    List_parent LP;
     List_child LC;
+    List_parent LP;
     List_relasi LR;
-    address_child C;
-    address_parent P;
-    address_relasi R;
 
-    createList(LP);
+    int i;
+
+    infotype_child xc;
+    infotype_parent xp;
+
     createList(LC);
+    createList(LP);
     createList(LR);
 
-    /** insert parent */
-    P = alokasi(3);
-    insertFirst(LP, P);
-    P = alokasi(7);
-    insertFirst(LP, P);
-    P = alokasi(2);
-    insertFirst(LP, P);
-    P = alokasi(4);
-    insertFirst(LP, P);
+    cout<<"       Final Task ASD 2018               \n";
+    cout<<" Aditya Ramadhan Moesya - 1301160471     \n";
+    cout<<" Muhamad Rikbal Ikhsani - 1301163598     \n";
 
-    cout<<"list parent"<<endl;
-    printInfo(LP);
+    menu:
+    cout<<"===============Library Organizer==============   \n";
+    cout<<"==============================================   \n";
+    cout<<"         1. Add new Book                         \n";
+    cout<<"         2. Add new Member                       \n";
+    cout<<"         3. Add book to cart of a member         \n";
+    cout<<"         4. Delete book from cart                \n";
+    cout<<"         5. Delete Book                          \n";
+    cout<<"         6. Delete Member                        \n";
+    cout<<"         7. Show all Book                        \n";
+    cout<<"         8. Show all Member                      \n";
+    cout<<"         9. Show all Member with Borrowed Book   \n";
+    cout<<"         0. Exit                                 \n";
+    cout<<"-----------------------------------------------  \n";
+    cout<<endl;
+    cout<<"         INPUT : ";cin>>i;
 
-    /** insert child */
-    C = alokasi("A");
-    insertFirst(LC, C);
-    C = alokasi("D");
-    insertFirst(LC, C);
-    C = alokasi("E");
-    insertFirst(LC, C);
-    C = alokasi("O");
-    insertFirst(LC, C);
+    switch(i){
+            case 1:{
+                system("cls");
+                cout<<"<====Input Book=====> \n";
+                cout<<"===================== \n";
+                address_parent P = NULL;
+                cout<<"Input Book ID            : ";cin>>xp.idb;
+                P = findElm(LP,xp);
+                if(P==NULL){
+                    cout<<"Input Book Name          : ";cin>>xp.name;
+                    cout<<"input Book Genre         : ";cin>>xp.genre;
+                    P = alokasi(xp);
+                    insertLast(LP,P);
+                    cout<<"Done! \n";
+                }else{
+                    cout<<"Book ID is already exist!";
+                }
+                getch();
+                system("cls");
+                goto menu;
+            }
 
-    cout<<"list child"<<endl;
-    printInfo(LC);
+            case 2:{
+                system("cls");
+                cout<<"<====Input Member===> \n";
+                cout<<"===================== \n";
+                address_child Q = NULL;
+                cout<<"Input Member ID            : ";cin>>xc.id;
+                Q = findElm(LC,xc);
+                if(Q==NULL){
+                    cout<<"Input Member Name          : ";cin>>xc.name;
+                    Q = alokasi(xc);
+                    insertFirst(LC,Q);
+                    cout<<"Done! \n";
+                }else{
+                    cout<<"Member ID is already exist!";
+                }
+                getch();
+                system("cls");
+                goto menu;
+            }
 
-    /** RELASIKAN PARENT DENGAN CHILD **/
-    P = findElm(LP, 4);
-    C = findElm(LC, "E");
-    R = alokasi(P,C);
-    insertFirst(LR,R );
+            case 3:{
+                system("cls");
+                connectList(LR,LP,LC);
+                getch();
+                system("cls");
+                goto menu;
 
-    C = findElm(LC, "D");
-    R = alokasi(P, C);
-    insertFirst(LR,R );
+            }
+
+            case 4:{
+
+            }
+
+            case 5:{
+
+            }
+
+            case 6:{
+
+            }
+
+            case 7:{
+                system("cls");
+                cout<<"<=====Book List=====> \n";
+                cout<<"===================== \n";
+                cout<<endl;
+                printInfo(LP);
+                getch();
+                system("cls");
+                goto menu;
+            }
+
+            case 8:{
+                system("cls");
+                cout<<"<=====Member List=====> \n";
+                cout<<"======================= \n";
+                cout<<endl;
+                printInfo(LC);
+                getch();
+                system("cls");
+                goto menu;
+            }
+
+            case 9:{
+                system("cls");
+                cout<<"<========List=========> \n";
+                cout<<"======================= \n";
+                cout<<endl;
+                printInfo(LR);
+                getch();
+                system("cls");
+                goto menu;
+            }
 
 
-    P = findElm(LP, 2);
-    C = findElm(LC, "E");
-    R = alokasi(P, C);
-    insertFirst(LR, R );
+    }
 
-    P = findElm(LP, 3);
-    C = findElm(LC, "A");
-    R = alokasi(P, C);
-    insertFirst(LR,R );
-
-    cout<<endl<<"Setelah Direlasikan"<<endl;
-    cout<<"list parent"<<endl;
-    printInfo(LP);
-
-    cout<<endl<<"list child"<<endl;
-    printInfo(LC);
-
-    cout<<endl<<"list relasi"<<endl;
-    printInfo(LR);
-
-
-    /** KELEBIHAN DARI BENTUK III: jika salah satu child diedit **/
-    C = findElm(LC, "E");
-    info(C) = "X";
-
-    cout<<endl<<"Setelah Child Diedit"<<endl;
-    cout<<"list parent"<<endl;
-    printInfo(LP);
-
-    cout<<endl<<"list child"<<endl;
-    printInfo(LC);
-
-    cout<<endl<<"list relasi"<<endl;
-    printInfo(LR);
 
     return 0;
 }

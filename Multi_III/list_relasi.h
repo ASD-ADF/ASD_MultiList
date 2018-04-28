@@ -5,7 +5,10 @@
 #include "list_child.h"
 #include "list_parent.h"
 
-#include <iostream>
+#include<conio.h>
+#include<stdio.h>
+#include<iostream>
+#include<windows.h>
 using namespace std;
 
 #define next(P) P->next
@@ -40,6 +43,7 @@ address_relasi alokasi( address_parent P, address_child C);
 void dealokasi(address_relasi &P);
 address_relasi findElm(List_relasi L, address_parent P, address_child C);
 void printInfo(List_relasi L);
+void connectList(List_relasi &LR, List_parent LP, List_child LC);
 
 
 #endif // LIST_RELASI_H_INCLUDED
