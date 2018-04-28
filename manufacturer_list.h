@@ -4,6 +4,10 @@
 
 #include "relation_list.h"
 
+/*
+    Functions made by : Pertiwang Sismananda - 1301153614
+*/
+
 struct manufacturer {
 	std::string name;
 	std::string country;
@@ -22,14 +26,14 @@ struct manufacturer_list {
 };
 
 //functions
-void createList(manufacturer_list &list);
-parent_addr allocate(manufacturer data);
-void deallocate(parent_addr addr);
-void insertFirst(manufacturer_list &list, parent_addr addr);
-void insertLast(manufacturer_list &list, parent_addr addr);
-void insertAfter(manufacturer_list &list, parent_addr &prev, parent_addr addr);
-void deleteFirst(manufacturer_list &list, parent_addr &addr);
-void deleteLast(manufacturer_list &list, parent_addr &addr);
-void deleteAfter(manufacturer_list &list, parent_addr prev, parent_addr &addr);
-parent_addr searchByName(manufacturer_list &list, std::string name);
-void printList(manufacturer_list list);
+void createListManufacturer(manufacturer_list &list);
+parent_addr allocateManufacturer(manufacturer data);
+void deallocateManufacturer(parent_addr addr);
+void insertFirstManufacturer(manufacturer_list &list, parent_addr addr);
+void insertLastManufacturer(manufacturer_list &list, parent_addr addr);
+void insertAfterManufacturer(manufacturer_list &list, parent_addr &prev, parent_addr addr);
+void deleteFirstManufacturer(manufacturer_list &list, parent_addr &addr);
+void deleteLastManufacturer(manufacturer_list &list, parent_addr &addr);
+void deleteAfterManufacturer(manufacturer_list &list, parent_addr prev, parent_addr &addr);
+parent_addr searchManufacturerByName(manufacturer_list &list, std::string name);
+void printListManufacturer(manufacturer_list list);

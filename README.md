@@ -10,6 +10,5 @@ Group members:
 - Pertiwang Sismananda	1301153614
 - Hafiz Abdul Hakim		1301153624
 
-Expect several problems when using it with CodeBlocks, as CodeBlocks uses a different compiler and unfortunately we can't spare the time to convert it into MinGW syntax that CodeBlocks can compile.
-
-As an alternative we provided the project's executables, "ASD_Tubes_1301153614_1301153624.exe", in the folder.
+Is now compatible with CodeBlocks. 
+NO TIME TO RENAME THE FUNCTIONS INTO NIM AND NAME SO PLEASE UNDERSTAND.

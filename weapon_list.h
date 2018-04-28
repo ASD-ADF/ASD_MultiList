@@ -2,6 +2,10 @@
 #include <iostream>
 #include <string>
 
+/*
+    Functions made by : Pertiwang Sismananda - 1301153614
+*/
+
 struct weapon {
 	std::string name;
 	std::string caliber;
@@ -22,14 +26,14 @@ struct weapon_list {
 };
 
 //functions
-void createList(weapon_list &list);
-child_addr allocate(weapon data);
-void deallocate(child_addr addr);
-void insertFirst(weapon_list &list, child_addr addr);
-void insertLast(weapon_list &list, child_addr addr);
-void insertAfter(weapon_list &list, child_addr prev, child_addr addr);
-void deleteFirst(weapon_list &list, child_addr &addr);
-void deleteLast(weapon_list &list, child_addr &addr);
-void deleteAfter(weapon_list &list, child_addr prev, child_addr &addr);
-void printList(weapon_list list);
-child_addr searchByName(weapon_list list, std::string name);
+void createListWeapon(weapon_list &list);
+child_addr allocateWeapon(weapon data);
+void deallocateWeapon(child_addr addr);
+void insertFirstWeapon(weapon_list &list, child_addr addr);
+void insertLastWeapon(weapon_list &list, child_addr addr);
+void insertAfterWeapon(weapon_list &list, child_addr prev, child_addr addr);
+void deleteFirstWeapon(weapon_list &list, child_addr &addr);
+void deleteLastWeapon(weapon_list &list, child_addr &addr);
+void deleteAfterWeapon(weapon_list &list, child_addr prev, child_addr &addr);
+void printListWeapon(weapon_list list);
+child_addr searchWeaponByName(weapon_list list, std::string name);

@@ -1,8 +1,13 @@
 #include <iostream>
+#include <cstdlib>
 #include <conio.h>
 
 #include "manufacturer_list.h"
 #include "weapon_list.h"
+
+/*
+    Functions made by : Hafiz Abdul Hakim - 1301153624
+*/
 
 //manufacturer variable
 manufacturer mnfc;
@@ -35,22 +40,22 @@ void mainMenu(bool &exit, bool &debug) {
 	system("cls");
 	switch (key) {
 	case '1':
-		printList(weap_list);
+		printListWeapon(weap_list);
 		std::cout << "Press any key to continue . . ." << std::endl;
 		std::cin.ignore();
 		break;
 	case '2':
-		printList(mnfc_list);
+		printListManufacturer(mnfc_list);
 		std::cout << "Press any key to continue . . ." << std::endl;
 		std::cin.ignore();
 		break;
 	case '3':
 		std::cout << "Enter the name of the manufcaturer : ";
 		std::getline(std::cin, search_name);
-		parent = searchByName(mnfc_list, search_name);
+		parent = searchManufacturerByName(mnfc_list, search_name);
 		if (parent != NULL) {
 			std::cout << "\nShowing the weapons made by " << parent->info.name << " from " << parent->info.country << "\n" << std::endl;
-			printList(parent->child);
+			printListRelation(parent->child);
 		}
 		else {
 			std::cout << "\nManufacturer not found." << std::endl;
@@ -87,12 +92,12 @@ bool debugWeaponMenu() {
 		std::cin >> weap.caliber;
 		std::cout << "Price : ";
 		std::cin >> weap.price;
-		child = allocate(weap);
+		child = allocateWeapon(weap);
 		if (weap_list.first == NULL) {
-			insertFirst(weap_list, child);
+			insertFirstWeapon(weap_list, child);
 		}
 		else {
-			insertLast(weap_list, child);
+			insertLastWeapon(weap_list, child);
 		}
 		std::cout << "Successfully inserted." << std::endl;
 		std::cout << "Press any key to continue . . ." << std::endl;
@@ -102,17 +107,17 @@ bool debugWeaponMenu() {
 		std::cout << "WEAPON DELETE\n" << std::endl;
 		std::cout << "Name : ";
 		std::getline(std::cin, search_name);
-		child = searchByName(weap_list, search_name);
+		child = searchWeaponByName(weap_list, search_name);
 		if (child != NULL) {
 			std::cout << "Deleting " << child->info.name << " from the list . . .\n";
 			if (child == weap_list.first) {
-				deleteFirst(weap_list, child);
+				deleteFirstWeapon(weap_list, child);
 			}
 			else if (child == weap_list.last) {
-				deleteLast(weap_list, child);
+				deleteLastWeapon(weap_list, child);
 			}
 			else {
-				deleteAfter(weap_list, child->prev, child);
+				deleteAfterWeapon(weap_list, child->prev, child);
 			}
 			std::cout << "Successfully deleted." << std::endl;
 		}
@@ -123,7 +128,7 @@ bool debugWeaponMenu() {
 		std::cin.ignore();
 		break;
 	case '3':
-		printList(weap_list);
+		printListWeapon(weap_list);
 		std::cout << "Press any key to continue . . ." << std::endl;
 		std::cin.ignore();
 		break;
@@ -152,12 +157,12 @@ bool debugManufacturerMenu() {
 		std::getline(std::cin, mnfc.name);
 		std::cout << "Country : ";
 		std::cin >> mnfc.country;
-		parent = allocate(mnfc);
+		parent = allocateManufacturer(mnfc);
 		if (mnfc_list.first == NULL) {
-			insertFirst(mnfc_list, parent);
+			insertFirstManufacturer(mnfc_list, parent);
 		}
 		else {
-			insertLast(mnfc_list, parent);
+			insertLastManufacturer(mnfc_list, parent);
 		}
 		std::cout << "Successfully inserted." << std::endl;
 		std::cout << "Press any key to continue . . ." << std::endl;
@@ -167,21 +172,21 @@ bool debugManufacturerMenu() {
 		std::cout << "MANUFACTURER DELETE\n" << std::endl;
 		std::cout << "Name : ";
 		std::getline(std::cin, search_name);
-		parent = searchByName(mnfc_list, search_name);
+		parent = searchManufacturerByName(mnfc_list, search_name);
 		if (parent != NULL) {
 			std::cout << "Deleting " << parent->info.name << " from the list . . .\n";
 			if (parent == mnfc_list.first) {
-				deleteFirst(mnfc_list, parent);
+				deleteFirstManufacturer(mnfc_list, parent);
 			}
 			else if (parent->next == mnfc_list.first) {
-				deleteLast(mnfc_list, parent);
+				deleteLastManufacturer(mnfc_list, parent);
 			}
 			else {
 				parent_addr itr = mnfc_list.first;
 				while (itr->next != parent) {
 					itr = itr->next;
 				}
-				deleteAfter(mnfc_list, itr, parent);
+				deleteAfterManufacturer(mnfc_list, itr, parent);
 			}
 			std::cout << "Successfully deleted." << std::endl;
 		}
@@ -192,7 +197,7 @@ bool debugManufacturerMenu() {
 		std::cin.ignore();
 		break;
 	case '3':
-		printList(mnfc_list);
+		printListManufacturer(mnfc_list);
 		std::cout << "Press any key to continue . . ." << std::endl;
 		std::cin.ignore();
 		break;
@@ -219,17 +224,17 @@ bool debugRelationMenu() {
 		std::cout << "RELATION CONNECT WEAPON TO MANUFACTURER\n" << std::endl;
 		std::cout << "Weapon name : ";
 		std::getline(std::cin, search_name);
-		child = searchByName(weap_list, search_name);
+		child = searchWeaponByName(weap_list, search_name);
 		std::cout << "Manufacturer name : ";
 		std::getline(std::cin, search_name);
-		parent = searchByName(mnfc_list, search_name);
+		parent = searchManufacturerByName(mnfc_list, search_name);
 		if (child != NULL && parent != NULL) {
 			std::cout << "Connecting " << child->info.name << " to " << parent->info.name << " . . ." << std::endl;
 			if (parent->child.first == NULL) {
-				insertFirst(parent->child, allocate(child));
+				insertFirstRelation(parent->child, allocateRelation(child));
 			}
 			else {
-				insertLast(parent->child, allocate(child));
+				insertLastRelation(parent->child, allocateRelation(child));
 			}
 			std::cout << "Successfully connected." << std::endl;
 		}
@@ -251,25 +256,25 @@ bool debugRelationMenu() {
 		std::cout << "RELATION DISCONNECT WEAPON FROM MANUFACTURER\n" << std::endl;
 		std::cout << "Weapon Name : ";
 		std::getline(std::cin, search_name);
-		child = searchByName(weap_list, search_name);
+		child = searchWeaponByName(weap_list, search_name);
 		if (child != NULL) {
 			parent = mnfc_list.first;
 			while (parent->next != mnfc_list.first) {
 				relation = searchChildinRelation(parent->child, child);
 				if (relation != NULL) {
 					if (relation == parent->child.first) {
-						deleteFirst(parent->child, relation);
+						deleteFirstRelation(parent->child, relation);
 					}
 					else if (relation->next == parent->child.first) {
-						deleteLast(parent->child, relation);
+						deleteLastRelation(parent->child, relation);
 					}
 					else {
 						relation_addr itr = parent->child.first;
 						while (itr->next != relation) {
 							itr = itr->next;
 						}
-						deleteAfter(parent->child, itr, relation);
-					}
+						deleteAfterRelation(parent->child, itr, relation);
+					}Manufacturer
 				}
 				parent = parent->next;
 			}
@@ -285,7 +290,7 @@ bool debugRelationMenu() {
 		std::cout << "PRINT LIST\n" << std::endl;
 		std::cout << "Manufacturer name : ";
 		std::getline(std::cin, search_name);
-		parent = searchByName(mnfc_list, search_name);
+		parent = searchManufacturerByName(mnfc_list, search_name);
 		if (parent == NULL) {
 			std::cout << "Not found." << std::endl;
 		}
@@ -320,7 +325,7 @@ void debugMenu(bool &exit, bool &debug) {
 		<< "1. Weapon menu\n"
 		<< "2. Manufacturer menu\n"
 		<< "3. Relation menu\n"
-		<< "0. Exit\n" 
+		<< "0. Exit\n"
 		<< "\nPress 'Shift + ~' to return to main menu.\n" << std::endl;
 
 	char key = _getche();
@@ -355,109 +360,109 @@ void debugMenu(bool &exit, bool &debug) {
 
 void seedList() {
 	//Making manufacturer entity
-	createList(mnfc_list);
+	createListManufacturer(mnfc_list);
 
 	mnfc.name = "IZMASH";
 	mnfc.country = "Russia";
-	parent = allocate(mnfc);
-	insertFirst(mnfc_list, parent);
+	parent = allocateManufacturer(mnfc);
+	insertFirstManufacturer(mnfc_list, parent);
 
 	mnfc.name = "Heckler & Koch";
 	mnfc.country = "Germany";
-	parent = allocate(mnfc);
-	insertLast(mnfc_list, parent);
+	parent = allocateManufacturer(mnfc);
+	insertLastManufacturer(mnfc_list, parent);
 
 	mnfc.name = "ARMALITE";
 	mnfc.country = "United States";
-	parent = allocate(mnfc);
-	insertAfter(mnfc_list, mnfc_list.first, parent);
+	parent = allocateManufacturer(mnfc);
+	insertAfterManufacturer(mnfc_list, mnfc_list.first, parent);
 
 
 	//Making weapon entities
-	createList(weap_list);
+	createListWeapon(weap_list);
 
 	weap.name = "AK47";
 	weap.caliber = "7.62x39mm";
 	weap.price = 700;
-	child = allocate(weap);
-	insertFirst(weap_list, child);
+	child = allocateWeapon(weap);
+	insertFirstWeapon(weap_list, child);
 
 	weap.name = "AKM";
 	weap.caliber = "7.62x39mm";
 	weap.price = 1000;
-	child = allocate(weap);
-	insertLast(weap_list, child);
+	child = allocateWeapon(weap);
+	insertLastWeapon(weap_list, child);
 
 	weap.name = "AK74";
 	weap.caliber = "5.45x39mm";
 	weap.price = 900;
-	child = allocate(weap);
-	insertAfter(weap_list, weap_list.first, child);
+	child = allocateWeapon(weap);
+	insertAfterWeapon(weap_list, weap_list.first, child);
 
 	weap.name = "AK74M";
 	weap.caliber = "5.45x39mm";
 	weap.price = 1400;
-	child = allocate(weap);
-	insertLast(weap_list, child);
+	child = allocateWeapon(weap);
+	insertLastWeapon(weap_list, child);
 
 	weap.name = "AK103";
 	weap.caliber = "7.62x39mm";
 	weap.price = 2000;
-	child = allocate(weap);
-	insertLast(weap_list, child);
+	child = allocateWeapon(weap);
+	insertLastWeapon(weap_list, child);
 
 	weap.name = "M16A4";
 	weap.caliber = "5.56x45mm";
 	weap.price = 2000;
-	child = allocate(weap);
-	insertLast(weap_list, child);
+	child = allocateWeapon(weap);
+	insertLastWeapon(weap_list, child);
 
 	weap.name = "M4A1";
 	weap.caliber = "5.56x45mm";
 	weap.price = 3000;
-	child = allocate(weap);
-	insertLast(weap_list, child);
+	child = allocateWeapon(weap);
+	insertLastWeapon(weap_list, child);
 
 	weap.name = "HK416";
 	weap.caliber = "5.56x45mm";
 	weap.price = 3500;
-	child = allocate(weap);
-	insertLast(weap_list, child);
+	child = allocateWeapon(weap);
+	insertLastWeapon(weap_list, child);
 
 	weap.name = "HK417";
 	weap.caliber = "7.62x51mm";
 	weap.price = 3800;
-	child = allocate(weap);
-	insertLast(weap_list, child);
+	child = allocateWeapon(weap);
+	insertLastWeapon(weap_list, child);
 
 
 	//Assigning weapon to manufacturer
-	relation = allocate(searchByName(weap_list, "AK47"));
-	insertFirst(searchByName(mnfc_list, "IZMASH")->child, relation);
+	relation = allocateRelation(searchWeaponByName(weap_list, "AK47"));
+	insertFirstRelation(searchManufacturerByName(mnfc_list, "IZMASH")->child, relation);
 
-	relation = allocate(searchByName(weap_list, "AK74"));
-	insertLast(searchByName(mnfc_list, "IZMASH")->child, relation);
+	relation = allocateRelation(searchWeaponByName(weap_list, "AK74"));
+	insertLastRelation(searchManufacturerByName(mnfc_list, "IZMASH")->child, relation);
 
-	relation = allocate(searchByName(weap_list, "AKM"));
-	insertLast(searchByName(mnfc_list, "IZMASH")->child, relation);
+	relation = allocateRelation(searchWeaponByName(weap_list, "AKM"));
+	insertLastRelation(searchManufacturerByName(mnfc_list, "IZMASH")->child, relation);
 
-	relation = allocate(searchByName(weap_list, "AK74M"));
-	insertLast(searchByName(mnfc_list, "IZMASH")->child, relation);
+	relation = allocateRelation(searchWeaponByName(weap_list, "AK74M"));
+	insertLastRelation(searchManufacturerByName(mnfc_list, "IZMASH")->child, relation);
 
-	relation = allocate(searchByName(weap_list, "AK103"));
-	insertLast(searchByName(mnfc_list, "IZMASH")->child, relation);
+	relation = allocateRelation(searchWeaponByName(weap_list, "AK103"));
+	insertLastRelation(searchManufacturerByName(mnfc_list, "IZMASH")->child, relation);
 
-	relation = allocate(searchByName(weap_list, "M16A4"));
-	insertFirst(searchByName(mnfc_list, "ARMALITE")->child, relation);
+	relation = allocateRelation(searchWeaponByName(weap_list, "M16A4"));
+	insertFirstRelation(searchManufacturerByName(mnfc_list, "ARMALITE")->child, relation);
 
-	relation = allocate(searchByName(weap_list, "M4A1"));
-	insertLast(searchByName(mnfc_list, "ARMALITE")->child, relation);
+	relation = allocateRelation(searchWeaponByName(weap_list, "M4A1"));
+	insertLastRelation(searchManufacturerByName(mnfc_list, "ARMALITE")->child, relation);
 
-	relation = allocate(searchByName(weap_list, "HK416"));
-	insertFirst(searchByName(mnfc_list, "Heckler & Koch")->child, relation);
+	relation = allocateRelation(searchWeaponByName(weap_list, "HK416"));
+	insertFirstRelation(searchManufacturerByName(mnfc_list, "Heckler & Koch")->child, relation);
 
-	relation = allocate(searchByName(weap_list, "HK417"));
-	insertLast(searchByName(mnfc_list, "Heckler & Koch")->child, relation);
+	relation = allocateRelation(searchWeaponByName(weap_list, "HK417"));
+	insertLastRelation(searchManufacturerByName(mnfc_list, "Heckler & Koch")->child, relation);
 
 }
 

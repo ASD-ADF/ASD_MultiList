@@ -1,11 +1,15 @@
-#include "weapon_list.h"
+#include "weapon_list.h
 
-void createList(weapon_list &list) {
+/*
+    Functions made by : Pertiwang Sismananda - 1301153614
+*/
+
+void createListWeapon(weapon_list &list) {
 	list.first = NULL;
 	list.last = NULL;
 }
 
-child_addr allocate(weapon data) {
+child_addr allocateWeapon(weapon data) {
 	child_addr addr = new weapon_elm;
 	addr->info = data;
 	addr->next = NULL;
@@ -13,11 +17,11 @@ child_addr allocate(weapon data) {
 	return addr;
 }
 
-void deallocate(child_addr addr) {
+void deallocateWeapon(child_addr addr) {
 	delete(addr);
 }
 
-void insertFirst(weapon_list &list, child_addr addr) {
+void insertFirstWeapon(weapon_list &list, child_addr addr) {
 	if (list.first == NULL) {
 		list.first = addr;
 		list.last = addr;
@@ -27,10 +31,10 @@ void insertFirst(weapon_list &list, child_addr addr) {
 		list.first->prev = addr;
 		list.first = addr;
 	}
-	
+
 }
 
-void insertLast(weapon_list &list, child_addr addr) {
+void insertLastWeapon(weapon_list &list, child_addr addr) {
 	if (list.first != NULL) {
 		addr->prev = list.last;
 		list.last->next = addr;
@@ -38,7 +42,7 @@ void insertLast(weapon_list &list, child_addr addr) {
 	}
 }
 
-void insertAfter(weapon_list &list, child_addr prev, child_addr addr) {
+void insertAfterWeapon(weapon_list &list, child_addr prev, child_addr addr) {
 	if (prev != NULL) {
 		if (prev == list.last) {
 			list.last = addr;
@@ -50,33 +54,33 @@ void insertAfter(weapon_list &list, child_addr prev, child_addr addr) {
 	}
 }
 
-void deleteFirst(weapon_list &list, child_addr &addr) {
+void deleteFirstWeapon(weapon_list &list, child_addr &addr) {
 	if (list.first != NULL) {
 		addr = list.first;
 		list.first = list.first->next;
-		deallocate(addr);
+		deallocateWeapon(addr);
 	}
 }
 
-void deleteLast(weapon_list &list, child_addr &addr) {
+void deleteLastWeapon(weapon_list &list, child_addr &addr) {
 	if (list.last != NULL) {
 		addr = list.last;
 		list.last = list.last->prev;
 		list.last->next = NULL;
-		deallocate(addr);
+		deallocateWeapon(addr);
 	}
 }
 
-void deleteAfter(weapon_list &list, child_addr prev, child_addr &addr) {
+void deleteAfterWeapon(weapon_list &list, child_addr prev, child_addr &addr) {
 	if (prev != NULL) {
 		addr = prev->next;
 		prev->next = prev->next->next;
 		prev->next->prev = prev;
-		deallocate(addr);
+		deallocateWeapon(addr);
 	}
 }
 
-void printList(weapon_list list) {
+void printListWeapon(weapon_list list) {
 	child_addr itr = list.first;
 	while (itr != NULL) {
 		std::cout << "Name : " << itr->info.name
@@ -87,7 +91,7 @@ void printList(weapon_list list) {
 	}
 }
 
-child_addr searchByName(weapon_list list, std::string name) {
+child_addr searchWeaponByName(weapon_list list, std::string name) {
 	if (list.first != NULL) {
 		child_addr addr = list.first;
 		while (addr != NULL) {

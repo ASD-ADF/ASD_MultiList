@@ -1,0 +1,32 @@
+# depslib dependency file v1.0
+1524921498 source:c:\users\gp62\documents\asd_multilist\relation_list.cpp
+	"relation_list.h"
+
+1524921205 c:\users\gp62\documents\asd_multilist\relation_list.h
+	<iostream>
+	<string>
+	"weapon_list.h"
+
+1524921065 c:\users\gp62\documents\asd_multilist\weapon_list.h
+	<iostream>
+	<string>
+
+1524921515 source:c:\users\gp62\documents\asd_multilist\weapon_list.cpp
+	"weapon_list.h"
+
+1524921878 source:c:\users\gp62\documents\asd_multilist\manufacturer_list.cpp
+	"manufacturer_list.h"
+	"relation_list.h"
+
+1524921035 c:\users\gp62\documents\asd_multilist\manufacturer_list.h
+	<iostream>
+	<string>
+	"relation_list.h"
+
+1524921826 source:c:\users\gp62\documents\asd_multilist\main.cpp
+	<iostream>
+	<cstdlib>
+	<conio.h>
+	"manufacturer_list.h"
+	"weapon_list.h"
+
