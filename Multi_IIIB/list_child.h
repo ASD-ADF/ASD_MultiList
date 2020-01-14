@@ -11,7 +11,13 @@ using namespace std;
 #define last(L) L.last
 #define info(P) P->info
 
-typedef string infotype_child;
+struct song{
+    int id_song;
+    string name_song;
+    string name_loc;
+};
+
+typedef song infotype_child;
 typedef struct elmlist_child *address_child;
 
 struct elmlist_child{
@@ -26,20 +32,20 @@ struct List_child{
 };
 
 /** TIDAK PERLU MODIFIKASI */
-void createList(List_child &L);
-void insertFirst(List_child &L, address_child P);
-void insertLast(List_child &L, address_child P);
-void insertAfter(address_child Prec, address_child P);
-void deleteFirst(List_child &L, address_child &P);
-void deleteLast(List_child &L, address_child &P);
-void deleteAfter(address_child Prec, address_child &P);
+void createList_C(List_child &L);
+void insertFirst_C(List_child &L, address_child P);
+void insertLast_C(List_child &L, address_child P);
+void insertAfter_C(List_child &L, address_child &Prec, address_child P);
+void deleteFirst_C(List_child &L, address_child &P);
+void deleteLast_C(List_child &L, address_child &P);
+void deleteAfter_C(List_child &L, address_child Prec, address_child &P);
 
 
 /** PERLU MODIFIKASI */
-address_child alokasi(infotype_child x);
-void dealokasi(address_child &P);
-address_child findElm(List_child L, infotype_child x);
-void printInfo(List_child L);
+address_child alokasi_C(infotype_child x);
+void dealokasi_C(address_child &P);
+address_child findElm_C(List_child L, infotype_child x);
+void printInfo_C(List_child L);
 
 
 #endif // LIST_CHILD_H_INCLUDED
