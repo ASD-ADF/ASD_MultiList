@@ -1,14 +1,23 @@
 #ifndef LIST_PARENT_H_INCLUDED
 #define LIST_PARENT_H_INCLUDED
 
-#include <iostream>
+#include<conio.h>
+#include<stdio.h>
+#include<iostream>
+#include<windows.h>
 using namespace std;
 
 #define first(L) L.first
 #define next(P) P->next
 #define info(P) P->info
 
-typedef int infotype_parent;
+struct book{
+    int idb;
+    string name;
+    string genre;
+};
+
+typedef book infotype_parent;
 typedef struct elmlist_parent *address_parent;
 
 struct elmlist_parent {
